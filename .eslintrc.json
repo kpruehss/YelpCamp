@@ -1,0 +1,9 @@
+{
+  "extends": "strongloop",
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error", "log"] }]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  }
+}
