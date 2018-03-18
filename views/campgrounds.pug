@@ -9,10 +9,10 @@ block content
         p
           a.btn.btn-primary.btn-lg(href="/campgrounds/new") Add a new camping ground
     
-    .row
+    .row.d-flex.flex-wrap.text-center
       each campground in campgrounds
-        .col-md-4
+        .col-md-3.col-sm-6.mb-2
           .card
-            img(src=campground.image, class="card-img-top" alt="Missing Image")
+            img(src=campground.image, class="card-img-top img-thumbnail" alt="Missing Image")
             .card-body
-              h5.card-text=campground.name
+              h5.card-subtitle=campground.name
