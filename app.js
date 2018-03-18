@@ -10,7 +10,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/campgrounds', (req, res) => {
-  res.render('campgrounds');
+  const campgrounds = [
+    {
+      name: 'Salmon Creek',
+      image: 'https://pixabay.com/en/travel-adventure-camping-night-2604981/',
+    },
+    {
+      name: 'Granite Hill',
+      image: 'https://pixabay.com/en/tent-camping-remote-campsite-1208201/',
+    },
+    {
+      name: 'Mountain Goat\'s Rest',
+      image: 'https://pixabay.com/en/night-stars-galaxy-wonder-camp-839807/',
+    },
+  ];
+  res.render('campgrounds', {campgrounds: campgrounds});
 });
 
 // Server instance
