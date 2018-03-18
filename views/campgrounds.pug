@@ -1,10 +1,18 @@
 extends partials/layout
 
 block content
-  h1 This is the campgrounds page!
-  each campground in campgrounds
-    div
-      h4=campground.name
-      img(src=campground.image, alt="Missing Image")
-  
-  a(href="/campgrounds/new") Add a new camping ground
+  .container
+    header.jumbotron
+      .container
+        h1 Welcome to YelpCamp
+        p View our handpicked campgrounds from all over the planet
+        p
+          a.btn.btn-primary.btn-lg(href="/campgrounds/new") Add a new camping ground
+    
+    .row
+      each campground in campgrounds
+        .col
+          .card
+            img(src=campground.image, class="card-img-top" alt="Missing Image")
+            .card-body
+              h5.card-text=campground.name
