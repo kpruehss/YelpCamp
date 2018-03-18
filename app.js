@@ -43,11 +43,11 @@ app
     campgrounds.push(newCampground);
 
     // redirect to campgrounds page
-    res.redirect();
+    res.redirect('/campgrounds');
   });
 
 app.get('/campgrounds/new', (req, res) => {
-  res.render('new.ejs');
+  res.render('new');
 });
 
 // Server instance
