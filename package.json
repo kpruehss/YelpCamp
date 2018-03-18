@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kpruehss/yelpCamp#readme",
   "dependencies": {
+    "ejs": "^2.5.7",
     "eslint": "^4.18.2",
     "eslint-config-google": "^0.9.1",
     "express": "^4.16.3"
