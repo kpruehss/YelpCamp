@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 3000);
 
+// Test data. Will be replaced with mongoDB
 let campgrounds = [
   {
     name: 'Salmon Creek',
