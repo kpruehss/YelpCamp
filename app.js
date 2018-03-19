@@ -62,9 +62,10 @@ app.get('/campgrounds/new', (req, res) => {
   res.render('new');
 });
 
+// SHOW - shows more info about campground with :id
 app.get('/campgrounds/:id', (req, res) => {
   // Find campground with :id
-  res.send('This will be the show page');
+  res.render('show');
 });
 
 // ------------SERVER INSTANCE----------------
