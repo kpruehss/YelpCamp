@@ -18,6 +18,7 @@ mongoose.connect('mongodb://localhost/yelp_camp');
 const campgroundSchema = new mongoose.Schema({
   image: String,
   name: String,
+  description: String,
 });
 
 // Create model
@@ -62,6 +63,7 @@ app.get('/campgrounds/new', (req, res) => {
 });
 
 app.get('/campgrounds/:id', (req, res) => {
+  // Find campground with :id
   res.send('This will be the show page');
 });
 
