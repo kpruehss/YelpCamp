@@ -4,9 +4,27 @@ block content
   nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .container-fluid
       a.navbar-brand(href="/")|YelpCamp
+      button.navbar-toggler(
+        type='button'
+        data-toggle='collapse'
+        data-target='#mainToggle'
+        aria-controls='mainToggle'
+        aria-expanded='false'
+        aria-label='Toggle Navigation'
+      )
+        span.navbar-toggler-icon
+      
+      .collapse.navbar-collapse#mainToggle
+        ul.navbar-nav.ml-auto.mt-2.mt-lg-0
+          li.nav-item
+            a.nav-link(href="/") Login
+          li.nav-item
+            a.nav-link(href="/") Sign Up
+          li.nav-item
+            a.nav-link(href="/") Log Out
 
   .container
-    header.jumbotron
+    .jumbotron
       .container
         h1 Welcome to YelpCamp
         p View our handpicked campgrounds from all over the planet
