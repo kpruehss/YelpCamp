@@ -1,8 +1,16 @@
 extends partials/layout
 
 block content
-  h1 Create a New Campground
-  form(action="/campgrounds", method="POST")
-    input(type="text", name="name", placeholder="name")
-    input(type="text", name="image", placeholder="image url")
-    button Submit!
+  .container
+    .row
+    h1.text-center Create a New Campground
+    div.mx-auto.mt-3(style='width: 30%;')
+      form(action="/campgrounds", method="POST")
+        .form-group
+          input.form-control(type="text", name="name", placeholder="name")
+        .form-group
+          input.form-control(type="text", name="image", placeholder="image url")
+        .form-group
+          button.btn.btn-primary.btn-lg.btn-block Submit!
+
+        a(href="/campgrounds") Go Back
