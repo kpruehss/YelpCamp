@@ -1,4 +1,4 @@
-// Required modules
+// ------------APP REQUIREMENTS-------------
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -9,19 +9,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 3000);
 
-// Database connection, Schema and Modal config
+// -----------MONGO DB CONFIG-----------
+
+// Connect to mongoDB
 mongoose.connect('mongodb://localhost/yelp_camp');
 
-// SCHEMA
+// Create campground schema
 const campgroundSchema = new mongoose.Schema({
   image: String,
   name: String,
 });
 
-// Model
+// Create model
 const Campground = mongoose.model('Campground', campgroundSchema);
 
-// Routes
+// -------------APP ROUTES--------------
 app.get('/', (req, res) => {
   res.render('landing');
 });
@@ -39,11 +41,12 @@ app
     });
   })
   .post((req, res) => {
-    // get data from form and add to campgrounds array
+    // get data from form and construct campground object
     let name = req.body.name;
     let image = req.body.image;
     let newCampground = {name: name, image: image};
-    // Create a new campground and save to DB
+
+    // Pass campground object and save to DB
     Campground.create(newCampground, (err, campground) => {
       if (err) {
         console.log(err);
@@ -58,7 +61,7 @@ app.get('/campgrounds/new', (req, res) => {
   res.render('new');
 });
 
-// Server instance
+// ------------SERVER INSTANCE----------------
 app.listen(app.get('port'), () => {
   console.log('yelpCamp Server started');
 });
