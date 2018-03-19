@@ -30,14 +30,14 @@ app.get('/', (req, res) => {
 });
 
 app
-  .route('/campgrounds')
+  .route('/index')
   .get((req, res) => {
     // Get all campgrounds from DB
     Campground.find({}, (err, campgrounds) => {
       if (err) {
         console.log(err);
       } else {
-        res.render('campgrounds', {campgrounds: campgrounds});
+        res.render('index', {campgrounds: campgrounds});
       }
     });
   })
@@ -53,17 +53,17 @@ app
         console.log(err);
       } else {
         // redirect to campgrounds page
-        res.redirect('/campgrounds');
+        res.redirect('/index');
       }
     });
   });
 
-app.get('/campgrounds/new', (req, res) => {
+app.get('/index/new', (req, res) => {
   res.render('new');
 });
 
 // SHOW - shows more info about campground with :id
-app.get('/campgrounds/:id', (req, res) => {
+app.get('/index/:id', (req, res) => {
   // Find campground with :id
   res.render('show');
 });
