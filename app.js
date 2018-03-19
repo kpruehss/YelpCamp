@@ -57,6 +57,10 @@ app
     });
   });
 
+app.get('/campgrounds/:id', (req, res) => {
+  res.send('This will be the show page');
+});
+
 app.get('/campgrounds/new', (req, res) => {
   res.render('new');
 });
