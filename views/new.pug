@@ -5,7 +5,7 @@ block content
     .row
     h1.text-center.mt-2 Create a New Campground
     div.mx-auto.mt-2.w-50.p-3
-      form(action="/index", method="POST")
+      form(action="/campgrounds", method="POST")
         .form-group
           input.form-control(type="text", name="name", placeholder="name")
         .form-group
@@ -13,4 +13,4 @@ block content
         .form-group
           button.btn.btn-primary.btn-lg.btn-block Submit!
 
-        a(href="/index") Go Back
+        a(href="/campgrounds") Go Back

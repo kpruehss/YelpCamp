@@ -1,0 +1,10 @@
+extends partials/layout
+
+block content
+  h1 This is the show template
+
+  p=campground.name
+
+  img(src=campground.image, alt="Cannot find image")
+
+  p=campground.description

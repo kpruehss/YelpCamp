@@ -7,7 +7,7 @@ block content
         h1 Welcome to YelpCamp
         p View our handpicked campgrounds from all over the planet
         p
-          a.btn.btn-primary.btn-lg(href="/index/new") Add a new camping ground
+          a.btn.btn-primary.btn-lg(href="/campgrounds/new") Add a new camping ground
     
     .row.d-flex.flex-wrap.text-center
       each campground in campgrounds
@@ -16,3 +16,5 @@ block content
             img(src=campground.image, class="card-img-top img-thumbnail" alt="Missing Image")
             .card-body
               h5.card-subtitle=campground.name
+            p
+              a(href="/campgrounds/" + campground._id, class="btn btn-primary") More Info
