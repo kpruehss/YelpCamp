@@ -1,10 +1,9 @@
 extends partials/layout
 
 block content
-  h1 This is the show template
-
-  p=campground.name
+  h1=campground.name
 
   img(src=campground.image, alt="Cannot find image")
 
   p=campground.description
+  a(href="/campgrounds") Go Back

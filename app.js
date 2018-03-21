@@ -45,7 +45,8 @@ app
     // get data from form and construct campground object
     let name = req.body.name;
     let image = req.body.image;
-    let newCampground = {name: name, image: image};
+    let description = req.body.description;
+    let newCampground = {name: name, image: image, description: description};
 
     // Pass campground object and save to DB
     Campground.create(newCampground, (err, campground) => {
