@@ -5,5 +5,8 @@ block content
 
   img(src=campground.image, alt="Cannot find image")
 
-  p=campground.description
+  p #{campground.description}
+
+  each comment in campground.comments
+    p #{comment.author} - #{comment.text}
   a(href="/campgrounds") Go Back

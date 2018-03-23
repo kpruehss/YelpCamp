@@ -60,14 +60,16 @@ app.get('/campgrounds/new', (req, res) => {
 // SHOW - shows more info about campground with :id
 app.get('/campgrounds/:id', (req, res) => {
   // Find campground with :id
-  Campground.findById(req.params.id, (err, foundCampground) => {
-    if (err) {
-      console.log(err);
-    } else {
-      // Render the showgrounds with :id
-      res.render('show', {campground: foundCampground});
-    }
-  });
+  Campground.findById(req.params.id)
+    .populate('comments')
+    .exec((err, foundCampground) => {
+      if (err) {
+        console.log(err);
+      } else {
+        // Render the showgrounds with :id
+        res.render('show', {campground: foundCampground});
+      }
+    });
 });
 
 // ------------SERVER INSTANCE----------------

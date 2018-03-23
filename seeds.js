@@ -31,7 +31,7 @@ const seedDB = function seedDB() {
     } else {
       // add a few campgrounds
       data.forEach((seed) => {
-        Campground.create(seed, (err, data) => {
+        Campground.create(seed, (err, campground) => {
           if (err) {
             console.log(err);
           } else {
@@ -46,8 +46,8 @@ const seedDB = function seedDB() {
                 if (err) {
                   console.log(err);
                 } else {
-                  Campground.comments.push(comment);
-                  Campground.save();
+                  campground.comments.push(comment);
+                  campground.save();
                 }
               }
             );
