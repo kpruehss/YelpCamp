@@ -1,1 +1,16 @@
-h1 NEW COMMENT FORM
+extends ../partials/layout
+
+block content
+  .container
+    .row
+    h1.text-center.mt-2 Add new comment to #{campground.name}
+    div.mx-auto.mt-2.w-50.p-3
+      form(action="/campgrounds/" + campground._id + "/comments", method="POST")
+        .form-group
+          input.form-control(type="text", name="comment[text]", placeholder="text")
+        .form-group
+          input.form-control(type="text", name="comment[author]", placeholder="author")
+        .form-group
+          button.btn.btn-primary.btn-lg.btn-block Submit!
+
+        a(href="/campgrounds") Go Back

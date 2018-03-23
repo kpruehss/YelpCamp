@@ -7,6 +7,8 @@ block content
 
   p #{campground.description}
 
+  p
+    a(class="btn btn-success" ,href="/campgrounds/" + campground._id + "/comments/new")| Add new comment
   each comment in campground.comments
     p #[strong #{comment.author}] - #{comment.text}
   a(href="/campgrounds") Go Back
