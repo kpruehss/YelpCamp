@@ -1,6 +1,14 @@
 extends ../partials/layout
 
 block content
+  .container
+    .row
+      .col-md-3
+        p.lead YelpCamp
+        .list-group
+          li.list-group-item.active|Info 1
+          li.list-group-item|Info 2
+          li.list-group-item|Info 3
   h1 #{campground.name}
 
   img(src=campground.image, alt="Cannot find image")
