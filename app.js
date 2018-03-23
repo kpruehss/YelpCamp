@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
 const Campground = require('./models/campground');
+const seedDB = require('./seeds');
+
+seedDB();
 
 // App configuration
 app.use(bodyParser.urlencoded({extended: true}));
