@@ -4,6 +4,12 @@ const campgroundSchema = new mongoose.Schema({
   image: String,
   name: String,
   description: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+    },
+  ],
 });
 
 // Export the model
