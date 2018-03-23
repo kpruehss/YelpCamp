@@ -8,3 +8,5 @@ const campgroundSchema = new mongoose.Schema({
 
 // Export the model
 module.exports = mongoose.model('Campground', campgroundSchema);
+
+// testing to see if branches match now
