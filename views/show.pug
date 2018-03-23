@@ -1,12 +1,12 @@
 extends partials/layout
 
 block content
-  h1=campground.name
+  h1 #{campground.name}
 
   img(src=campground.image, alt="Cannot find image")
 
   p #{campground.description}
 
   each comment in campground.comments
-    p #{comment.author} - #{comment.text}
+    p #[strong #{comment.author}] - #{comment.text}
   a(href="/campgrounds") Go Back
