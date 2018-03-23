@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const Campground = require('./models/campground');
 
 // App configuration
 app.use(bodyParser.urlencoded({extended: true}));
@@ -13,16 +14,6 @@ app.set('port', process.env.PORT || 3000);
 
 // Connect to mongoDB
 mongoose.connect('mongodb://localhost/yelp_camp');
-
-// Create campground schema
-const campgroundSchema = new mongoose.Schema({
-  image: String,
-  name: String,
-  description: String,
-});
-
-// Create model
-const Campground = mongoose.model('Campground', campgroundSchema);
 
 // -------------APP ROUTES--------------
 app.get('/', (req, res) => {
