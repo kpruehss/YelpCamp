@@ -31,7 +31,7 @@ app
       if (err) {
         console.log(err);
       } else {
-        res.render('index', {campgrounds: campgrounds});
+        res.render('./campgrounds/index', {campgrounds: campgrounds});
       }
     });
   })
@@ -54,7 +54,7 @@ app
   });
 
 app.get('/campgrounds/new', (req, res) => {
-  res.render('new');
+  res.render('./campgrounds/new');
 });
 
 // SHOW - shows more info about campground with :id
@@ -67,9 +67,17 @@ app.get('/campgrounds/:id', (req, res) => {
         console.log(err);
       } else {
         // Render the showgrounds with :id
-        res.render('show', {campground: foundCampground});
+        res.render('./campgrounds/show', {campground: foundCampground});
       }
     });
+});
+
+// ================
+// COMMENTS ROUTES
+// ================
+
+app.get('/campgrounds/:id/comments/new', (req, res) => {
+  res.render('./comments/new');
 });
 
 // ------------SERVER INSTANCE----------------
