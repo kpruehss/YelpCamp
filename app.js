@@ -63,12 +63,12 @@ app.get('/campgrounds/:id', (req, res) => {
   // Find campground with :id
   Campground.findById(req.params.id)
     .populate('comments')
-    .exec((err, foundCampground) => {
+    .exec((err, campground) => {
       if (err) {
         console.log(err);
       } else {
         // Render the showgrounds with :id
-        res.render('./campgrounds/show', {campground: foundCampground});
+        res.render('./campgrounds/show', {campground: campground});
       }
     });
 });
