@@ -11,10 +11,9 @@ block content
           li.list-group-item|Info 3
       .col-md-9
         .card
-          img(class="img-fluid img-thumbnail" src=campground.image, alt="Cannot find image")
-          
-  h1 #{campground.name}
-
+          img(class="img-fluid card-img-top" src=campground.image, alt="Cannot find image")
+          .card-body
+            h4.card-title #[a(href="") #{campground.name}] #[span.text-right $9.00/night]
 
   p #{campground.description}
 
