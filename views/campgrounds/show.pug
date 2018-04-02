@@ -13,9 +13,8 @@ block content
         .card
           img(class="img-fluid card-img-top" src=campground.image, alt="Cannot find image")
           .card-body
-            h4.card-title #[a(href="") #{campground.name}] #[span.text-right $9.00/night]
-
-  p #{campground.description}
+            h4.card-title #[a(href="") #{campground.name}] #[span.float-right $9.00/night]
+            p #{campground.description}
 
   p
     a(class="btn btn-success" ,href="/campgrounds/" + campground._id + "/comments/new")| Add new comment
