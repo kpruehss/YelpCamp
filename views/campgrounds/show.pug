@@ -15,9 +15,15 @@ block content
           .card-body
             h4.card-title #[a(href="") #{campground.name}] #[span.float-right $9.00/night]
             p #{campground.description}
+          .card-footer
+            .text-right
+              a(class="btn btn-success" ,href="/campgrounds/" + campground._id + "/comments/new")| Add new comment
+              hr
 
-  p
-    a(class="btn btn-success" ,href="/campgrounds/" + campground._id + "/comments/new")| Add new comment
-  each comment in campground.comments
-    p #[strong #{comment.author}] - #{comment.text}
-  a(href="/campgrounds") Go Back
+            each comment in campground.comments
+              .row
+                .col-md-12
+                  p #[strong #{comment.author}] #[span.float-right 10 days ago]
+                  p #{comment.text}
+                  
+            a(href="/campgrounds") Go Back
