@@ -24,7 +24,7 @@ app.use(
     secret: 'Arwen is a people',
     resave: false,
     saveUninitialized: false,
-  }),
+  })
 );
 
 app.use(passport.initialize());
