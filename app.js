@@ -3,8 +3,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const Campground = require('./models/campground');
 const Comment = require('./models/comment');
+const User = require('./models/user');
 const seedDB = require('./seeds');
 
 seedDB();
@@ -14,6 +17,20 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 3000);
+
+// Passport Configuration
+app.use(
+  require('express-session')({
+    secret: 'Arwen is a people',
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // -----------MONGO DB CONFIG-----------
 
@@ -110,6 +127,32 @@ app.post('/campgrounds/:id/comments', (req, res) => {
   // create new comments
   // connect new comment to campground
   // redirect to campground showpage
+});
+
+// ===========
+// AUTH ROUTES
+// ===========
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+// handle sign up logix
+app.post('/register', (req, res) => {
+  let newUser = new User({username: req.body.username});
+  User.register(newUser, req.body.password, (err, user) => {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    }
+    passport.authenticate('local')(req, res, () => {
+      res.redirect('/campgrounds');
+    });
+  });
+});
+
+// show login form
+app.get('/login', (req, res) => {
+  res.render('login');
 });
 
 // ------------SERVER INSTANCE----------------
