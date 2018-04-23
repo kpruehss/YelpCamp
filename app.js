@@ -24,7 +24,7 @@ app.use(
     secret: 'Arwen is a people',
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 
 app.use(passport.initialize());
@@ -154,6 +154,11 @@ app.post('/register', (req, res) => {
 // show login form
 app.get('/login', (req, res) => {
   res.render('login');
+});
+
+// handle login logic
+app.post('/login', (req, res) => {
+  res.send();
 });
 
 // ------------SERVER INSTANCE----------------
