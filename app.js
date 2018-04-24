@@ -157,9 +157,14 @@ app.get('/login', (req, res) => {
 });
 
 // handle login logic
-app.post('/login', (req, res) => {
-  res.send();
-});
+app.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/campgrounds',
+    failureRedirect: '/login',
+  }),
+  (req, res) => {}
+);
 
 // ------------SERVER INSTANCE----------------
 app.listen(app.get('port'), () => {
