@@ -33,6 +33,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+});
+
 // -----------MONGO DB CONFIG-----------
 
 // Connect to mongoDB
@@ -51,7 +55,10 @@ app
       if (err) {
         console.log(err);
       } else {
-        res.render('./campgrounds/index', {campgrounds: campgrounds});
+        res.render('./campgrounds/index', {
+          campgrounds: campgrounds,
+          currentUser: req.user,
+        });
       }
     });
   })
@@ -96,7 +103,7 @@ app.get('/campgrounds/:id', (req, res) => {
 // COMMENTS ROUTES
 // ================
 
-app.get('/campgrounds/:id/comments/new', (req, res) => {
+app.get('/campgrounds/:id/comments/new', isLoggedIn, (req, res) => {
   // find campground by id
   Campground.findById(req.params.id, (err, campground) => {
     if (err) {
@@ -107,7 +114,7 @@ app.get('/campgrounds/:id/comments/new', (req, res) => {
   });
 });
 
-app.post('/campgrounds/:id/comments', (req, res) => {
+app.post('/campgrounds/:id/comments', isLoggedIn, (req, res) => {
   // lookup campgrounds using ID
   Campground.findById(req.params.id, (err, campground) => {
     if (err) {
@@ -166,6 +173,19 @@ app.post(
   (req, res) => {}
 );
 
+// logout route
+app.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/campgrounds');
+});
+
+// eslint-disable-next-line require-jsdoc
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 // ------------SERVER INSTANCE----------------
 app.listen(app.get('port'), () => {
   console.log('yelpCamp Server started');

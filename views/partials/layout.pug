@@ -20,15 +20,16 @@ html
           aria-label='Toggle Navigation'
         )
           span.navbar-toggler-icon
-        
+
         .collapse.navbar-collapse#mainToggle
           ul.navbar-nav.ml-auto.mt-2.mt-lg-0
-            li.nav-item
-              a.nav-link(href="/") Login
-            li.nav-item
-              a.nav-link(href="/") Sign Up
-            li.nav-item
-              a.nav-link(href="/") Log Out
+            if !currentUser
+              li.nav-item
+                a.nav-link(href='/login') Login
+                a.nav-link(href='/register') Sign Up
+            else
+              li.nav-item
+                a.nav-link(href='/logout') Log Out
     block content
     br
     hr

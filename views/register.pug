@@ -1,6 +1,9 @@
-h1 Sign Up!
+extends partials/layout
 
-form(action='/register' method='POST')
-  input(type="text", name="username", placeholder="username")
-  input(type="password", name="password", placeholder="password")
-  button Sign Up
+block content
+  h1 Sign Up!
+
+  form(action='/register' method='POST')
+    input(type="text", name="username", placeholder="username")
+    input(type="password", name="password", placeholder="password")
+    button Sign Up
