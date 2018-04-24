@@ -35,6 +35,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
+  next();
 });
 
 // -----------MONGO DB CONFIG-----------

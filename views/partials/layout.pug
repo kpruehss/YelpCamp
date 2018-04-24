@@ -26,8 +26,11 @@ html
             if !currentUser
               li.nav-item
                 a.nav-link(href='/login') Login
+              li.nav-item
                 a.nav-link(href='/register') Sign Up
             else
+              li.nav-item
+                a.nav-link Signed in as #{currentUser.username}
               li.nav-item
                 a.nav-link(href='/logout') Log Out
     block content
