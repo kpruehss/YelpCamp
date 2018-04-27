@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const methodOverride = require('method-override');
 const User = require('./models/user');
 const seedDB = require('./seeds');
 
@@ -17,6 +18,7 @@ const indexRoutes = require('./routes/index.js');
 // App configuration
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method'));
 app.set('view engine', 'pug');
 app.set('port', process.env.PORT || 3000);
 
