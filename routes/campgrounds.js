@@ -16,12 +16,21 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
   // get data from form and construct campground object
   let name = req.body.name;
   let image = req.body.image;
   let description = req.body.description;
-  let newCampground = {name: name, image: image, description: description};
+  let author = {
+    id: req.user._id,
+    username: req.user.username,
+  };
+  let newCampground = {
+    name: name,
+    image: image,
+    description: description,
+    author: author,
+  };
 
   // Pass campground object and save to DB
   Campground.create(newCampground, (err, campground) => {
@@ -34,7 +43,7 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('./campgrounds/new');
 });
 
@@ -52,5 +61,13 @@ router.get('/:id', (req, res) => {
       }
     });
 });
+
+// eslint-disable-next-line require-jsdoc
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 module.exports = router;

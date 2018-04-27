@@ -15,6 +15,7 @@ block content
           .card-body
             h4.card-title #[a(href="") #{campground.name}] #[span.float-right $9.00/night]
             p #{campground.description}
+            p #[em|Submitted by: #{campground.author.username}]
           .card-footer
             .text-right
               a(class="btn btn-success" ,href="/campgrounds/" + campground._id + "/comments/new")| Add new comment
