@@ -23,7 +23,7 @@ block content
             each comment in campground.comments
               .row
                 .col-md-12
-                  p #[strong #{comment.author}] #[span.float-right 10 days ago]
+                  p #[strong #{comment.author.username}] #[span.float-right 10 days ago]
                   p #{comment.text}
                   
             a(href="/campgrounds") Go Back

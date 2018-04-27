@@ -3,7 +3,7 @@ const Comment = require('./models/comment');
 
 const data = [
   {
-    name: "Cloud's Rest",
+    name: 'Cloud\'s Rest',
     image:
       'https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c85daa025ee04c951b6ac12fe3ba031a&auto=format&fit=crop&w=500&q=60',
     description:
@@ -27,12 +27,12 @@ const data = [
 
 const seedDB = function seedDB() {
   // Remove all campgrounds
-  Campground.remove({}, err => {
+  Campground.remove({}, (err) => {
     if (err) {
       console.log(err);
     } else {
       // add a few campgrounds
-      data.forEach(seed => {
+      data.forEach((seed) => {
         Campground.create(seed, (err, campground) => {
           if (err) {
             console.log(err);
@@ -41,7 +41,7 @@ const seedDB = function seedDB() {
             // create comment
             Comment.create(
               {
-                text: "This place is great but there's no Wifi!",
+                text: 'This place is great but there\'s no Wifi!',
                 author: 'Homer',
               },
               (err, comment) => {

@@ -12,7 +12,7 @@ const campgroundRoutes = require('./routes/campgrounds.js');
 const commentRoutes = require('./routes/comments.js');
 const indexRoutes = require('./routes/index.js');
 
-seedDB();
+// seedDB(); // seed the database
 
 // App configuration
 app.use(bodyParser.urlencoded({extended: true}));
